@@ -1,13 +1,16 @@
 import { Button, ListGroup } from "react-bootstrap";
 
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI1ZTQ0MzFlYmU4MjAwMTUwOWYzMGMiLCJpYXQiOjE3NDczMTM3MzEsImV4cCI6MTc0ODUyMzMzMX0.sOUGPFm9rwM0pYvE3wqyxXhkj2MG6LblP4jVZPpikrI";
+
 const SingleComment = ({ comment }) => {
-  const deleteComment = async asin => {
+  const deleteComment = async (asin) => {
     try {
       let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + asin, {
         method: "DELETE",
         headers: {
-          Authorization: "Bearer INSERISCI_IL_TUO_TOKEN"
-        }
+          Authorization: ` Bearer ${token}`,
+        },
       });
       if (response.ok) {
         alert("La recensione è stata elimata!");

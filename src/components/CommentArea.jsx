@@ -45,35 +45,6 @@ const CommentArea = ({ asin }) => {
     fetchComments();
   }, [asin]);
 
-  /*  componentDidUpdate = async prevProps => {
-    if (prevProps.asin !== this.props.asin) {
-      this.setState({
-        isLoading: true
-      });
-      try {
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
-          headers: {
-            Authorization: "Bearer INSERISCI_IL_TUO_TOKEN"
-          }
-        });
-        console.log(response);
-        if (response.ok) {
-          let comments = await response.json();
-          this.setState({
-            comments: comments,
-            isLoading: false,
-            isError: false
-          });
-        } else {
-          this.setState({ isLoading: false, isError: true });
-        }
-      } catch (error) {
-        console.log(error);
-        this.setState({ isLoading: false, isError: true });
-      }
-    }
-  }; */
-
   return (
     <div className="text-center">
       {isLoading && <Loading />}
@@ -111,3 +82,32 @@ export default CommentArea;
 //     this.setState({ isLoading: false, isError: true })
 //   }
 // }
+
+/*  componentDidUpdate = async prevProps => {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        isLoading: true
+      });
+      try {
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
+          headers: {
+            Authorization: "Bearer INSERISCI_IL_TUO_TOKEN"
+          }
+        });
+        console.log(response);
+        if (response.ok) {
+          let comments = await response.json();
+          this.setState({
+            comments: comments,
+            isLoading: false,
+            isError: false
+          });
+        } else {
+          this.setState({ isLoading: false, isError: true });
+        }
+      } catch (error) {
+        console.log(error);
+        this.setState({ isLoading: false, isError: true });
+      }
+    }
+  }; */
