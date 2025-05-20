@@ -1,9 +1,9 @@
 import SingleBook from "./SingleBook";
 import { Col, Form, Row } from "react-bootstrap";
 import CommentArea from "./CommentArea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const BookList = (props) => {
+const BookList = ({ books }) => {
   /*   state = {
     searchQuery: '',
     selectedBook: null,
@@ -15,6 +15,11 @@ const BookList = (props) => {
   const changeSelectedBook = (asin) => {
     setSelectedBook(asin);
   };
+
+  //useEffect usato in BookList perchè la selezione dei libri sia univoca,
+  //passato poi come prop a SingleBook insieme a book e changeSelectedBook
+
+  useEffect(() => {}, [selectedBook]);
 
   return (
     <>
@@ -28,7 +33,7 @@ const BookList = (props) => {
             </Col>
           </Row>
           <Row className="g-2 mt-3">
-            {props.books
+            {books
               .filter((b) => b.title.toLowerCase().includes(searchQuery))
               .map((b) => (
                 <Col xs={12} md={4} key={b.asin}>
