@@ -1,12 +1,16 @@
-import { Component } from 'react'
+//versione con props non destrutturata
 
-class ImageComponent extends Component {
-  render() {
+/* const ImageComponent = (props) => {
     return (
-      // we need the src and the alt attributes
-      <img src={this.props.imageSrc} alt={this.props.altText} />
+      <img src={props.imageSrc} alt={props.altText} />
     )
   }
-}
 
-export default ImageComponent
+export default ImageComponent */
+
+//versione con props destrutturate
+const ImageComponent = (imageSrc, altText) => {
+  return <img src={imageSrc} alt={altText} />;
+};
+
+export default ImageComponent;
