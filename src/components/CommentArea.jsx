@@ -42,15 +42,21 @@ const CommentArea = ({ asin }) => {
   };
 
   useEffect(() => {
-    fetchComments();
+    if (asin) {
+      fetchComments();
+    }
   }, [asin]);
 
   return (
     <div className="text-center">
       {isLoading && <Loading />}
       {isError && <Error />}
-      <AddComment asin={asin} />
-      <CommentList commentsToShow={comments} />
+      {asin && (
+        <>
+          <AddComment asin={asin} fetchComments={fetchComments} />
+          <CommentList commentsToShow={comments} />
+        </>
+      )}
     </div>
   );
 };

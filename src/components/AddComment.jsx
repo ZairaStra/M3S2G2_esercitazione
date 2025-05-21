@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODI1ZTQ0MzFlYmU4MjAwMTUwOWYzMGMiLCJpYXQiOjE3NDczMTM3MzEsImV4cCI6MTc0ODUyMzMzMX0.sOUGPFm9rwM0pYvE3wqyxXhkj2MG6LblP4jVZPpikrI";
 
-const AddComment = ({ asin }) => {
+const AddComment = ({ asin, fetchComments }) => {
   /*  state = {
     comment: {
       comment: "",
@@ -18,9 +18,11 @@ const AddComment = ({ asin }) => {
     elementId: asin,
   });
 
+  //resetta il campo al click su un'altra immagine e ne cattura l'id
   useEffect(() => {
-    addComment((prev) => ({
-      ...prev,
+    addComment(() => ({
+      comment: "",
+      rate: 1,
       elementId: asin,
     }));
   }, [asin]);
@@ -56,6 +58,8 @@ const AddComment = ({ asin }) => {
             elementId: asin,
           },
         });
+
+        fetchComments();
       } else {
         throw new Error("Qualcosa è andato storto");
       }
